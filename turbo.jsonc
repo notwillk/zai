@@ -4,7 +4,13 @@
     "doctor": {
       "cache": false
     },
+    "doctor:fix": {
+      "cache": false
+    },
     "static": {
+      "cache": false
+    },
+    "static:fix": {
       "cache": false
     }
   }

@@ -2,6 +2,8 @@
   "name": "@repo/scripts",
   "scripts": {
     "doctor": "./doctor",
-    "static": "./static"
+    "doctor:fix": "./doctor --fix",
+    "static": "./static",
+    "static:fix": "./static --fix"
   }
 }
