@@ -1,0 +1,8 @@
+{
+  "$schema": "./tools.schema.json",
+  "node":  {
+    "check": "node --version | grep -q 'v$version'",
+    "installer": "apk add --no-cache \"nodejs=$version-r0\"",
+    "version": "22.15.1"
+  }
+}

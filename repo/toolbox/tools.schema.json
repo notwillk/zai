@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "tools.schema.json",
+  "type": "object",
+  "patternProperties": {
+    "^\\$.*": { "type": "string" },
+    "^.*$": {
+      "type": "object",
+      "properties": {
+        "check": { "type": "string" },
+        "installer": { "type": "string" },
+        "version": { "type": "string" }
+      },
+      "required": ["check", "version"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

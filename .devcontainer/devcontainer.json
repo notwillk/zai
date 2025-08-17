@@ -1,7 +1,11 @@
 {
   "name": "Dev Container",
-  "remoteUser": "vscode",                       // <— key: use an existing user
-  "build": { "dockerfile": "Dockerfile", "args": { "VARIANT": "alpine-3.21" } },
+  "remoteUser": "vscode",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": { "VARIANT": "alpine-3.21" },
+    "context": ".."
+ },
   "customizations": {
     "vscode": {
       "settings": { "terminal.integrated.shell.linux": "/bin/bash" },
