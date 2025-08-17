@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DOCTOR_DIR="$SCRIPT_DIR/doctors"
+
+for SCRIPT in "$DOCTOR_DIR"/*.sh; do
+  if [ -f "$SCRIPT" ]; then
+    echo "🩺 Running $SCRIPT $*"
+    "$SCRIPT" "$@"
+  fi
+done
