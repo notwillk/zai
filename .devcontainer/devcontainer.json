@@ -1,0 +1,16 @@
+{
+  "name": "Dev Container",
+  "remoteUser": "vscode",                       // <— key: use an existing user
+  "build": { "dockerfile": "Dockerfile", "args": { "VARIANT": "alpine-3.21" } },
+  "customizations": {
+    "vscode": {
+      "settings": { "terminal.integrated.shell.linux": "/bin/bash" },
+      "extensions": ["ms-azuretools.vscode-containers"]
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "./.devcontainer/postCreateCommand",
+  "forwardPorts": [3000]
+}
