@@ -1,0 +1,7 @@
+{
+  "name": "@repo/scripts",
+  "scripts": {
+    "doctor": "./doctor",
+    "static": "./static"
+  }
+}

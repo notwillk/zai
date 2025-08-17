@@ -12,6 +12,7 @@
       "extensions": ["ms-azuretools.vscode-containers"]
     }
   },
+  "runArgs": ["--env-file", ".devcontainer/env"],
   "remoteEnv": {
     "REPO_SECRET_KEY": "${localEnv:REPO_SECRET_KEY}"
   },

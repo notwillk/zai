@@ -1,1 +1,5 @@
 # zai
+
+## Setup
+
+Use devcontainer.
