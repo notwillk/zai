@@ -1,8 +1,18 @@
 {
   "$schema": "./tools.schema.json",
   "node":  {
-    "check": "node --version | grep -q 'v$version'",
+    "check": "node --version | grep -q '^v$version$'",
     "installer": "apk add --no-cache \"nodejs=$version-r0\"",
     "version": "22.15.1"
+  },
+  "pnpm": {
+    "check": "pnpm --version | grep -q '^$version$'",
+    "installer": "apk add --no-cache npm && npm install --global pnpm@$version && apk del npm",
+    "version": "10.14.0"
+  },
+  "turbo": {
+    "check": "turbo --version | grep -q '^$version$'",
+    "installer": "pnpm add --global turbo@$version",
+    "version": "2.5.6"
   }
 }

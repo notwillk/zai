@@ -12,14 +12,19 @@ fi
 
 TOOLS=$(jq -r 'keys[]' "$TOOLS_JSON" | grep -v '^$' | grep -v '^\$' | tr '\n' ' ')
 
+FAILED_COUNT=0
 for TOOL in $TOOLS; do
   CHECKER=$(jq -r --arg tool "$TOOL" '.[$tool].check' "$TOOLS_JSON")
   VERSION=$(jq -r --arg tool "$TOOL" '.[$tool].version' "$TOOLS_JSON")
   CHECKER_CMD=$(echo "$CHECKER" | sed "s/\$version/$VERSION/Ig")
-  echo "Checking $TOOL via: $CHECKER_CMD"
   if sh -c "$CHECKER_CMD" >/dev/null 2>&1; then
-    echo "$TOOL: OK"
+    echo "✅ $TOOL ($VERSION)"
   else
-    echo "$TOOL: NOT OK"
+    echo "❌ $TOOL ($VERSION)"
+    FAILED_COUNT=$((FAILED_COUNT + 1))
   fi
 done
+
+if [ $FAILED_COUNT -ne 0 ]; then
+  exit 1
+fi

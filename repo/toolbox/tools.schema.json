@@ -11,7 +11,7 @@
         "installer": { "type": "string" },
         "version": { "type": "string" }
       },
-      "required": ["check", "version"],
+      "required": ["check", "installer", "version"],
       "additionalProperties": false
     }
   },
