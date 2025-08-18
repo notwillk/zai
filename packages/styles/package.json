@@ -1,0 +1,17 @@
+{
+  "name": "@package/styles",
+  "dependencies": {
+    "tailwindcss": "^4.1.12"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.12"
+  },
+  "files": [
+    "dist/index.css"
+  ],
+  "scripts": {
+    "build": "tailwindcss -c tailwind.config.js -i ./src/index.css -o ./dist/index.css",
+    "clean": "rm -rf ./dist",
+    "local": "tailwindcss -c tailwind.config.js -i ./src/index.css -o ./dist/index.css --watch"
+  }
+}
