@@ -1,11 +1,21 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "doctor": {
+    "build": {
+      "dependsOn": ["static", "^build"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "clean:deep": {
       "cache": false
     },
     "doctor:fix": {
       "cache": false
+    },
+    "local": {
+      "dependsOn": ["^local"],
+      "persistent": true
     },
     "static": {
       "cache": false

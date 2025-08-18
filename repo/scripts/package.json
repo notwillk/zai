@@ -1,6 +1,7 @@
 {
   "name": "@repo/scripts",
   "scripts": {
+    "clean:deep": "./clean --deep",
     "doctor": "./doctor",
     "doctor:fix": "./doctor --fix",
     "static": "./static",

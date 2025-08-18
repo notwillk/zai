@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DEEP=false
+for arg in "$@"; do
+  case "$arg" in
+    --deep) DEEP=true ;;
+    *)
+      echo "Unknown option: $arg" >&2
+      exit 1
+      ;;
+  esac
+done
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel)"
+
+cd "$ROOT_DIR"
+
+EXCLUDE_PATTERNS=(
+  ".env"
+  ".env.*"
+  "*.env"
+  "*.env.*"
+)
+
+# Gather untracked files; add -i for ignored when --deep
+if [ "$DEEP" = true ]; then
+  mapfile -d '' FILES < <(git ls-files -o -i --exclude-standard -z)
+
+  # Nothing to do?
+  if [ "${#FILES[@]}" -eq 0 ]; then
+    echo "✅ No untracked files to delete."
+    exit 0
+  fi
+
+  deleted=0
+  for f in "${FILES[@]}"; do
+    base="$(basename "$f")"
+
+    skip=false
+    for pat in "${EXCLUDE_PATTERNS[@]}"; do
+      if [[ "$base" == $pat ]]; then
+        skip=true
+        break
+      fi
+    done
+
+    $skip && continue
+
+    echo "🗑️  Deleting untracked file: $f"
+    rm -f -- "$f" || true
+  done
+fi

@@ -1,0 +1,8 @@
+{
+  "name": "@app/test",
+  "scripts": {
+    "build": "mkdir -p dist && echo 'TBD' > dist/tbd.txt",
+    "clean": "rm -rf dist",
+    "dev": "mkdir -p dist && echo 'TBD' > dist/tbd.txt"
+  }
+}
